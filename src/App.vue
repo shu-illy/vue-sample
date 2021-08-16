@@ -5,17 +5,14 @@
       color="primary"
       dark
     >
-      <v-app-bar-nav-icon @click.stop="toggleSideMenu"></v-app-bar-nav-icon>
-      <v-app-bar-title class="headline text-uppercase">
-        <span>マイアドレス帳</span>
-      </v-app-bar-title>
+      <v-app-bar-nav-icon @click.stop="openSideMenu"></v-app-bar-nav-icon>
+      <v-toolbar-title>マイアドレス帳</v-toolbar-title>
       <v-spacer></v-spacer>
     </v-app-bar>
-    <SideNav/>
 
-    <v-main>
-      <!-- <router-view/> -->
-    </v-main>
+    <v-content>
+      <SideNav/>
+    </v-content>
   </v-app>
 </template>
 
