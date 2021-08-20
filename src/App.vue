@@ -20,12 +20,20 @@
 </template>
 
 <script>
+import firebase from 'firebase'
 import { mapActions } from 'vuex'
 import SideNav from './components/SideNav'
 export default {
   name: 'App',
   components: {
     SideNav
+  },
+  created() {
+    firebase.auth().onAuthStateChanged(user => {
+      if(user) {
+        this.setLoginUser(user)
+      }
+    })
   },
   data: () => ({
     //
@@ -34,7 +42,7 @@ export default {
     // openSideMenu() {
     //   this.$store.dispatch('toggleSideMenu')
     // },
-    ...mapActions(['toggleSideMenu'])
+    ...mapActions(['toggleSideMenu', 'setLoginUser'])
   }
 };
 </script>
