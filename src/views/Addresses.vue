@@ -15,7 +15,7 @@
 
       <v-flex xs12 mt-3 justify-center>
         <v-data-table :headers='headers' :items='addresses'>
-          <template v-slot:[`item.actions`]="{ item }">
+          <template v-slot:[`item.action`]="{ item }">
             <!-- https://qiita.com/pokoTan2525/items/c698457d2473dab0868f -->
             <router-link :to="{ name: 'address_edit', params: { address_id: item.id }}">
               <v-icon small class="mr-2">mdi-pencil</v-icon>
