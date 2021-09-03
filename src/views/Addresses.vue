@@ -15,11 +15,11 @@
 
       <v-flex xs12 mt-3 justify-center>
         <v-data-table :headers='headers' :items='addresses'>
-          <template v-slot:items="props">
-            <td class="text-xs-left">{{ props.item.name }}</td>
-            <td class="text-xs  -left">{{ props.item.tel }}</td>
-            <td class="text-xs-left">{{ props.item.email }}</td>
-            <td class="text-xs-left">{{ props.item.address }}</td>
+          <template v-slot:[`item.actions`]="{ item }">
+            <!-- https://qiita.com/pokoTan2525/items/c698457d2473dab0868f -->
+            <router-link :to="{ name: 'address_edit', params: { address_id: item.id }}">
+              <v-icon small class="mr-2">mdi-pencil</v-icon>
+            </router-link>
           </template>
         </v-data-table>
       </v-flex>
@@ -38,10 +38,17 @@
           { text: '名前', value: 'name' },
           { text: '電話番号', value: 'tel' },
           { text: 'メールアドレス', value: 'email' },
-          { text: '住所', value: 'address' }
+          { text: '住所', value: 'address' },
+          { text: '操作', value: 'action', sortable: false }
         ],
         addresses: []
       }
     }
   }
 </script>
+
+<style scoped long="scss">
+a {
+  text-decoration: none;
+}
+</style>
